@@ -13,14 +13,14 @@ public abstract class AbstractPage {
 
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
-    private Actions actions;
+    protected Actions actions;
 
     public AbstractPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         this.actions = new Actions(webDriver);
         webDriverWait = new WebDriverWait(webDriver, 30);
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         PageFactory.initElements(webDriver, this);
     }
 }
