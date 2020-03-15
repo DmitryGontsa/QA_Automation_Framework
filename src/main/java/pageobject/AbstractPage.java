@@ -2,6 +2,7 @@ package pageobject;
 
 import lombok.Data;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,5 +23,12 @@ public abstract class AbstractPage {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         PageFactory.initElements(webDriver, this);
+    }
+
+    public Actions moveToElement(WebElement webElement) {
+        Actions builder = new Actions(webDriver);
+        Actions hoverOverLocationSelector = builder.moveToElement(webElement);
+        hoverOverLocationSelector.perform();
+        return hoverOverLocationSelector;
     }
 }
